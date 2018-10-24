@@ -1,0 +1,9 @@
+#!/bin/bash
+
+exec docker run -ti --rm \
+        -p 172.17.0.1:9091:80 \
+        -v $HOME/tmp/svn:/svn \
+        --env SVN_UID=32123 \
+        --env SVN_GID=32123 \
+        --name test \
+        test "$@"

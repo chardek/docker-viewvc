@@ -28,6 +28,10 @@ RUN perl -pi -e \
     's/^#docroot\s*=.*$/docroot = \/docroot/g' \
     /etc/viewvc/viewvc.conf
 
+RUN perl -pi -e \
+    's/^#log_pagesize\s*=.*$/log_pagesize = 20/g' \
+    /etc/viewvc/viewvc.conf
+
 # Add the viewvc apache configuration and enable the site
 ADD viewvc.conf /etc/apache2/sites-available/
 RUN a2enmod cgid expires auth_digest authz_groupfile && \
